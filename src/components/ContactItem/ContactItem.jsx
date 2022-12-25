@@ -22,7 +22,7 @@ export const ContactItem = ({ id, name, phone }) => {
 };
 
 ContactItem.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
 };
