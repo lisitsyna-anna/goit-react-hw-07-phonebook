@@ -6,8 +6,8 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  state.isLoading = false;
   state.error = action.payload;
+  state.isLoading = false;
 };
 
 const contactsSlice = createSlice({
@@ -43,6 +43,7 @@ const contactsSlice = createSlice({
       );
       state.items.splice(index, 1);
     },
+    [deleteContact.rejected]: handleRejected,
   },
 });
 

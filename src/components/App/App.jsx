@@ -23,6 +23,8 @@ export function App() {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  const showEmptyPhoneBook = contacts.length === 0 && !isLoading && !error;
   return (
     <Container as="main">
       <Container
@@ -60,14 +62,14 @@ export function App() {
                 }}
               />
             )}
-            {contacts.length > 0 && <ContactList />}
-            {contacts.length === 0 && !isLoading && !error && (
-              <Text>Your phonebook is empty. Please add contact.</Text>
-            )}
             {error && (
-              <div style={{ margin: '0 auto', width: 400 }}>
+              <div style={{ margin: '10px auto', width: 400 }}>
                 Something went wrong...Try reloading the page
               </div>
+            )}
+            {contacts.length > 0 && <ContactList />}
+            {showEmptyPhoneBook && (
+              <Text>Your phonebook is empty. Please add contact.</Text>
             )}
           </Container>
         </Container>

@@ -44,7 +44,13 @@ export function ContactForm() {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, phone }))
+      .unwrap()
+      .then(() => Notify.success('Contact added!'))
+      .catch(() =>
+        Notify.failure('Something went wrong...Try reloading the page')
+      );
+
     setName('');
     setPhone('');
   };
